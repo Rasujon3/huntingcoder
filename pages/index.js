@@ -15,7 +15,15 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Script strategy="lazyOnload"></Script>
+      {/* <Script strategy="lazyOnload"></Script> */}
+      <nav className={styles.mainnav}>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Blogs</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
 
       <main className={styles.main}>
         <h1 className={styles.title}>Hunting Coder</h1>
@@ -24,7 +32,23 @@ export default function Home() {
           A blog for hunting coders by a hunting coder
         </p>
 
-        <div className={styles.grid}>
+        <div className="blogs">
+          <h2>Popular Blogs</h2>
+          <div className="blogItem">
+            <h3>How t learn Javascript in 2022?</h3>
+            <p>Javascript is the language used to design logic for the web</p>
+          </div>
+          <div className="blogItem">
+            <h3>How t learn Javascript in 2022?</h3>
+            <p>Javascript is the language used to design logic for the web</p>
+          </div>
+          <div className="blogItem">
+            <h3>How t learn Javascript in 2022?</h3>
+            <p>Javascript is the language used to design logic for the web</p>
+          </div>
+        </div>
+
+        {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -52,7 +76,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
