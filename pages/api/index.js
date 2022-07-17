@@ -3,5 +3,5 @@
 export default function handler(req, res) {
   // console.log(req);
   console.log(res);
-  res.status(200).json({ name: "Ruhul Amin Sujon" });
+  res.status(200).json({ name: "This is my home page" });
 }
