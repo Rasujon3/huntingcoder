@@ -1,27 +1,31 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Blog.module.css";
 
+// stpe 1: Collect all the files from blogdata directory
+// stpe 2: Iterate through them and Display them.
 const Blog = () => {
-  // stpe 1: Collect all the files from blogdata directory
-  // stpe 2: Iterate through them and Display them.
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    console.log("Useeffect is running");
+    const url = `http://localhost:3000/api/blogs`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setBlogs(data));
+  }, []);
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <div className={styles.blogItem}>
-          <Link href={"/blogpost/learn-js"}>
-            <h3>How t learn Javascript in 2022?</h3>
-          </Link>
-          <p>Javascript is the language used to design logic for the web</p>
-        </div>
-        <div className="blogItem">
-          <h3>How t learn Javascript in 2022?</h3>
-          <p>Javascript is the language used to design logic for the web</p>
-        </div>
-        <div className="blogItem">
-          <h3>How t learn Javascript in 2022?</h3>
-          <p>Javascript is the language used to design logic for the web</p>
-        </div>
+        {blogs.map((blogitem) => {
+          return (
+            <div key={blogitem.slug} className={styles.blogItem}>
+              <Link href={`/blogpost/${blogitem.slug}`}>
+                <h3>{blogitem.title}</h3>
+              </Link>
+              <p>{blogitem.content.substr(0, 140)} ...</p>
+            </div>
+          );
+        })}
       </main>
     </div>
   );
