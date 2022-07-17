@@ -3,6 +3,8 @@ import React from "react";
 import styles from "../styles/Blog.module.css";
 
 const Blog = () => {
+  // stpe 1: Collect all the files from blogdata directory
+  // stpe 2: Iterate through them and Display them.
   return (
     <div className={styles.container}>
       <main className={styles.main}>
