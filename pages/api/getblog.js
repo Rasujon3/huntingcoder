@@ -7,7 +7,7 @@ export default function handler(req, res) {
     if (err) {
       res.status(500).json({ error: "Internal Server Error" });
     }
-    console.log(req.query.slug);
+    // console.log(req.query.slug);
     res.status(200).json(JSON.parse(data));
   });
 }

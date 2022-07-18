@@ -4,15 +4,16 @@ import styles from "../styles/Blog.module.css";
 
 // stpe 1: Collect all the files from blogdata directory
 // stpe 2: Iterate through them and Display them.
-const Blog = () => {
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    console.log("Useeffect is running");
-    const url = `http://localhost:3000/api/blogs`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setBlogs(data));
-  }, []);
+const Blog = (props) => {
+  // console.log(props);
+  const [blogs, setBlogs] = useState(props.allBlogs);
+  // useEffect(() => {
+  // console.log("Useeffect is running");
+  // const url = `http://localhost:3000/api/blogs`;
+  // fetch(url)
+  //   .then((res) => res.json())
+  //   .then((data) => setBlogs(data));
+  // }, []);
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -30,5 +31,14 @@ const Blog = () => {
     </div>
   );
 };
+
+export async function getServerSideProps(context) {
+  const url = `http://localhost:3000/api/blogs`;
+  let data = await fetch(url);
+  let allBlogs = await data.json();
+  return {
+    props: { allBlogs },
+  };
+}
 
 export default Blog;
